@@ -1,0 +1,98 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>字幕拼接长图生成</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="app">
+      <div class="panel">
+        <div class="section">
+          <label class="label">上传图片</label>
+          <input id="file" type="file" accept="image/*" />
+        </div>
+        <div class="section">
+          <label class="label">切片高度</label>
+          <input id="slice" type="range" min="100" max="600" value="220" />
+          <div id="sliceVal" class="muted"></div>
+        </div>
+        <div class="section">
+          <label class="label">字幕行</label>
+          <div id="texts"></div>
+          <button id="addText" class="btn">添加一行</button>
+        </div>
+        <div class="section grid">
+          <div>
+            <label class="label">字号</label>
+            <input id="fontSize" type="number" value="42" />
+          </div>
+          <div>
+            <label class="label">描边宽度</label>
+            <input id="strokeWidth" type="number" value="2" />
+          </div>
+          <div>
+            <label class="label">填充颜色</label>
+            <input id="fill" type="color" value="#FF4D4F" />
+          </div>
+          <div>
+            <label class="label">描边颜色</label>
+            <input id="stroke" type="color" value="#FFFFFF" />
+          </div>
+          <div>
+            <label class="label">距底部</label>
+            <input id="bottomOffset" type="number" value="24" />
+          </div>
+        </div>
+        <div class="section grid">
+          <div>
+            <label class="label">分隔线</label>
+            <input id="sepEnable" type="checkbox" checked />
+          </div>
+          <div>
+            <label class="label">线色</label>
+            <input id="sepColor" type="color" value="#FFFFFF" />
+          </div>
+          <div>
+            <label class="label">线宽</label>
+            <input id="sepWidth" type="number" value="1" />
+          </div>
+          <div>
+            <label class="label">上下边距</label>
+            <input id="sepMargin" type="number" value="12" />
+          </div>
+        </div>
+        <div class="section grid">
+          <div>
+            <label class="label">水印内容</label>
+            <input id="wmText" type="text" placeholder="可选" />
+          </div>
+          <div>
+            <label class="label">位置</label>
+            <select id="wmPos">
+              <option value="none">关闭</option>
+              <option value="ru">右上</option>
+              <option value="rd" selected>右下</option>
+            </select>
+          </div>
+          <div>
+            <label class="label">不透明度</label>
+            <input id="wmOpacity" type="range" min="0" max="1" step="0.05" value="0.6" />
+          </div>
+        </div>
+        <div class="section">
+          <button id="download" class="btn primary">导出PNG</button>
+          <button id="copy" class="btn">复制到剪贴板</button>
+        </div>
+      </div>
+      <div class="preview">
+        <div class="preview-card">
+          <canvas id="canvas"></canvas>
+        </div>
+        <div id="hint" class="muted"></div>
+      </div>
+    </div>
+    <script src="main.js"></script>
+  </body>
+</html>
